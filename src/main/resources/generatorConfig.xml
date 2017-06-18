@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<!-- java -jar D:\dataSys\mybatis-generator-core-1.3.1.jar -configfile D:\dataSys\generator-mes.xml -overwrite -->
+	<!-- <classPathEntry location="D:\dataSys\mysql-connector-java-5.1.21.jar"/> -->
+
+	<properties resource="generatorConfig.properties"></properties>
+
+	<context id="MYSQL" targetRuntime="MyBatis3">
+		<!-- 这个插件可以用来指定列作为主键，即使他们没有严格定义为数据库中的主键。 -->
+		<!--<plugin type="org.mybatis.generator.plugins.VirtualPrimaryKeyPlugin"></plugin>-->
+		<!-- 这个插件生成包含所有生成的SQL映射sqlmap sqlmapconfig文件条目。
+		<plugin type="org.mybatis.generator.plugins.SqlMapConfigPlugin"></plugin> -->
+		<!-- 这个插件将添加selectbyexample方法包括参数生成的映射接口rowbounds。 支持二进制文件操作
+		<plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"></plugin> -->
+		<!-- 这个插件会生成一个包含映射条目映射生成SQL mybatis3 mapperconfig文件。
+		<plugin type="org.mybatis.generator.plugins.MapperConfigPlugin"></plugin> -->
+		<!-- 这个插件添加一个缓存单元生成sqlmaps。
+		<plugin type="org.mybatis.generator.plugins.CachePlugin"></plugin> -->
+		<!-- 这个插件显示添加方法实例类使像搜索不区分大小写。 -->
+		<plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"></plugin>
+		<!-- 这个插件添加equals() hashcode()方法生成的模型和类。 -->
+		<!--<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"></plugin>-->
+		<!-- 这个插件实现model序列化-->
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+		<!-- 这个插件添加toString方法生成的模型和类。 -->
+		<plugin type="org.mybatis.generator.plugins.ToStringPlugin"></plugin>
+
+		<!-- Example 目标包修改插件 -->
+		<plugin type="com.itfsw.mybatis.generator.plugins.ExampleTargetPlugin">
+			<!-- 修改Example类生成到目标包下 -->
+			<property name="targetPackage" value="cn.com.fantasy.db.entity.example"/>
+		</plugin>
+		<!-- 数据Model属性对应Column获取插件 -->
+		<plugin type="com.itfsw.mybatis.generator.plugins.ModelColumnPlugin"/>
+		<!-- 批量插入 -->
+		<plugin type="com.itfsw.mybatis.generator.plugins.BatchInsertPlugin"></plugin>
+		<!-- 分页插件 -->
+		<!--<plugin type="com.itfsw.mybatis.generator.plugins.LimitPlugin" />-->
+		<!-- 自定义注释插件 -->
+		<plugin type="com.itfsw.mybatis.generator.plugins.CommentPlugin">
+			<!-- 自定义模板路径 -->
+			<property name="template" value="src/main/resources/field-comment.ftl" />
+			<!--<property name="template" value="src/main/resources/default-comment.ftl" />-->
+		</plugin>
+
+		<!-- 此处是将UserMapper.xml改名为UserDao.xml 当然 想改成什么都行~ -->
+		<!--<plugin type="org.mybatis.generator.plugins.rename.RenameSqlMapperPlugin">
+			<property name="searchString" value="Mapper" />
+			<property name="replaceString" value="Dao" />
+		</plugin>-->
+
+		<!-- 此处是将UserMapper改名为UserDao 接口 当然 想改成什么都行~  -->
+		<plugin type="com.eagle.mybatisgenerator.plugins.RenameJavaMapperPlugin">
+			<property name="searchString" value="Mapper$" />
+			<property name="replaceString" value="Dao" />
+		</plugin>
+
+		<commentGenerator>
+			<property name="suppressAllComments" value="false" />
+		</commentGenerator>
+
+		<!--数据库连接信息-->
+		<jdbcConnection
+				driverClass="com.mysql.jdbc.Driver"
+				connectionURL="jdbc:mysql://123.56.203.238:6088/fantasydct"
+				userId="root"
+				password="fantasytv">
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!--model-->
+		<javaModelGenerator targetPackage="cn.com.fantasy.db.entity" targetProject="src\main\java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!--xml-->
+		<sqlMapGenerator targetPackage="cn.com.fantasy.db.mapper" targetProject="src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<!--mapper接口-->
+		<javaClientGenerator type="XMLMAPPER" targetPackage="cn.com.fantasy.db.dao"
+			targetProject="src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<!-- ====================================================== -->
+		
+		<table tableName="private_message" domainObjectName="">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" type="post" />
+		</table>
+
+	</context>
+</generatorConfiguration>
