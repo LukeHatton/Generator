@@ -101,7 +101,7 @@
      *
      * Because of difficulties with the Java file merger, the default implementation
      * of this method should NOT add comments.  Comments should only be added if
-     * specifically requested by the user (for example, by enabling table remark comments).
+     * specifically requested by the User (for example, by enabling table remark comments).
      *
      * @param topLevelClass
      *            the top level class
