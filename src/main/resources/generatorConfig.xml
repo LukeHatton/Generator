@@ -45,17 +45,17 @@
             <property name="template" value="src/main/resources/field-comment.ftl"/>
         </plugin>
 
-        <!-- 此处是将UserMapper.xml改名为UserDao.xml 当然 想改成什么都行~ -->
-        <plugin type="com.eagle.mybatisgenerator.plugins.RenameSqlMapperPlugin">
-            <property name="searchString" value="Mapper"/>
-            <property name="replaceString" value="Dao"/>
-        </plugin>
+        <!-- 此处是将UserMapper.xml改名为UserDao.xml -->
+        <!--<plugin type="com.eagle.mybatisgenerator.plugins.RenameSqlMapperPlugin">-->
+        <!--<property name="searchString" value="Mapper"/>-->
+        <!--<property name="replaceString" value="Dao"/>-->
+        <!--</plugin>-->
 
-        <!-- 此处是将UserMapper改名为UserDao 接口 当然 想改成什么都行~  -->
-        <plugin type="com.eagle.mybatisgenerator.plugins.RenameJavaMapperPlugin">
-            <property name="searchString" value="Mapper$"/>
-            <property name="replaceString" value="Dao"/>
-        </plugin>
+        <!-- 此处是将UserMapper改名为UserDao -->
+        <!--<plugin type="com.eagle.mybatisgenerator.plugins.RenameJavaMapperPlugin">-->
+        <!--<property name="searchString" value="Mapper"/>-->
+        <!--<property name="replaceString" value="Dao"/>-->
+        <!--</plugin>-->
 
         <commentGenerator>
             <property name="suppressAllComments" value="false"/>
@@ -74,26 +74,28 @@
         </javaTypeResolver>
 
         <!--model-->
-        <javaModelGenerator targetPackage="cn.com.fantasy.db.entity" targetProject="src\main\java">
+        <javaModelGenerator targetPackage="com.thinkgem.jeesite.modules.realsystem.entity.act"
+                            targetProject="src\main\java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
         <!--xml-->
-        <sqlMapGenerator targetPackage="cn.com.fantasy.db.mapper" targetProject="src\main\java">
+        <sqlMapGenerator targetPackage="com.thinkgem.jeesite.modules.realsystem.dao.act"
+                         targetProject="src\main\java">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <!--mapper接口-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.com.fantasy.db.dao"
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.thinkgem.jeesite.modules.realsystem.dao.act"
                              targetProject="src\main\java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
         <!-- ====================================================== -->
 
-        <table tableName="sys_user" domainObjectName="user" enableInsert="false">
-            <generatedKey column="id" sqlStatement="Mysql" identity="true" type="post"/>
+        <table tableName="act_hi_taskinst" domainObjectName="ActHiTaskinst" enableInsert="true">
+            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true" type="post"/>-->
         </table>
 
     </context>
